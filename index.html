@@ -231,6 +231,7 @@
     <div class="slide">
       <h1>Saas</h1>
       <h2>Saas : CSS :: Haml : HTML</h2>
+      <p><a href="http://sass-lang.com/">http://sass-lang.com/</a></p>
     </div>
 
     <div class="slide">
@@ -287,6 +288,26 @@
           </pre>
         </div>
       </div>
+    </div>
+
+    <div class="slide">
+      <h1>Using in Rails</h1>
+      <p>In your <code>GemFile</code>:</p>
+      <pre class="brush: ruby">
+        gem "haml"
+      </pre>
+      <p>Stylesheets in <code>public/stylesheets/sass</code> will be compiled and cached as CSS when necessary.</p>
+    </div>
+
+    <div class="slide">
+      <h1>Using outside Rails</h1>
+      <pre class="brush: ruby">
+        gem install haml
+
+        sass input.scss output.css
+
+        sass --watch app/sass:public/stylesheets
+      </pre>
     </div>
 
     <div class="slide">
@@ -447,6 +468,12 @@
             }
           </pre>
         </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="vcenter">
+        <h1>Demo and Discussion</h1>
       </div>
     </div>
 

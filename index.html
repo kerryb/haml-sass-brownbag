@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <!-- Slide meta data, remove/edit as you see fit -->
-    <title>Haml, Sass and LESS</title>
+    <title>Haml and Sass</title>
     <meta name="author" content="Kerry Buckley" />
     <meta name="email" content="kerry.buckley@gmail.com" />
     <meta name="date" content="2011-02-15" />
@@ -20,7 +20,7 @@
     <link type="text/css" rel="stylesheet" href="slippy-kerryb.css"/>
     <!-- Syntax highlighting -->
     <script type="text/javascript" src="highlighter/shCore.js"></script>
-    <script type="text/javascript" src="highlighter/shBrushBash.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushCss.js"></script>
     <script type="text/javascript" src="highlighter/shBrushPlain.js"></script>
     <script type="text/javascript" src="highlighter/shBrushRuby.js"></script>
     <script type="text/javascript" src="highlighter/shBrushXml.js"></script>
@@ -37,7 +37,7 @@
   </head>
   <body>
     <div class="slide">
-      <h1>Haml, Sass and Less</h1>
+      <h1>Haml and Sass</h1>
       <h2 class="center">Kerry Buckley<br />15 February 2011</h2>
       <div class="licence">
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img
@@ -226,6 +226,228 @@
         <li>Filters</li>
       </ul>
       <p>And more &ndash; read the manual!</p>
+    </div>
+
+    <div class="slide">
+      <h1>Saas</h1>
+      <h2>Saas : CSS :: Haml : HTML</h2>
+    </div>
+
+    <div class="slide">
+      <h1>Formats</h1>
+      <h2>.sass</h2>
+      <ul>
+        <li>Pre v3</li>
+        <li>Similar format to Haml</li>
+        <li>Compiled to CSS</li>
+      </ul>
+      <h2>.scss</h2>
+      <ul>
+        <li>v3 and above</li>
+        <li>Inspired by LESS</li>
+        <li>Superset of CSS</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Formats</h1>
+      <div class="comparison">
+        <div class="left">
+          <h2>.sass</h2>
+          <pre class="brush: plain">
+            table.hl
+              margin: 2em 0
+              td.ln
+                text-align: right
+
+            li
+              font:
+                family: serif
+                weight: bold
+                size: 1.2em
+          </pre>
+        </div>
+        <div class="right">
+          <h2>.scss</h2>
+          <pre class="brush: plain">
+            table.hl {
+              margin: 2em 0;
+              td.ln {
+                text-align: right;
+              }
+            }
+
+            li {
+              font: {
+                family: serif;
+                weight: bold;
+                size: 1.2em;
+              }
+            }
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Variables</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: css">
+             $blue: #3bbfce;
+             $margin: 16px;
+
+             .content-navigation {
+               border-color: $blue;
+               color:
+                 darken($blue, 9%);
+             }
+
+             .border {
+               padding: $margin / 2;
+               margin: $margin / 2;
+               border-color: $blue;
+             }
+          </pre>
+        </div>
+        <div class="right">
+          <pre class="brush: css">
+            .content-navigation {
+              border-color: #3bbfce;
+              color: #2b9eab;
+            }
+
+            .border {
+              padding: 8px;
+              margin: 8px;
+              border-color: #3bbfce;
+            }
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Nesting</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: css">
+            table.hl {
+              margin: 2em 0;
+              td.ln {
+                text-align: right;
+              }
+            }
+
+            li {
+              font: {
+                family: serif;
+                weight: bold;
+                size: 1.2em;
+              }
+            }
+          </pre>
+        </div>
+        <div class="right">
+          <pre class="brush: css">
+            table.hl {
+              margin: 2em 0;
+            }
+            table.hl td.ln {
+              text-align: right;
+            }
+
+            li {
+              font-family: serif;
+              font-weight: bold;
+              font-size: 1.2em;
+            }
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Mixins</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: css">
+            @mixin table-base {
+              th {
+                text-align: center;
+                font-weight: bold;
+              }
+              td, th {padding: 2px}
+            }
+
+            @mixin left($dist) {
+              float: left;
+              margin-left: $dist;
+            }
+
+            #data {
+              @include left(10px);
+              @include table-base;
+            }
+          </pre>
+        </div>
+        <div class="right">
+          <pre class="brush: css">
+            #data {
+              float: left;
+              margin-left: 10px;
+            }
+            #data th {
+              text-align: center;
+              font-weight: bold;
+            }
+            #data td, #data th {
+              padding: 2px;
+            }
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Selector Inheritance</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: css">
+            .error {
+              border: 1px #f00;
+              background: #fdd;
+            }
+            .error.intrusion {
+              font-size: 1.3em;
+              font-weight: bold;
+            }
+
+            .badError {
+              @extend .error;
+              border-width: 3px;
+            }
+          </pre>
+        </div>
+        <div class="right">
+          <pre class="brush: css">
+            .error, .badError {
+              border: 1px #f00;
+              background: #fdd;
+            }
+
+            .error.intrusion,
+            .badError.intrusion {
+              font-size: 1.3em;
+              font-weight: bold;
+            }
+
+            .badError {
+              border-width: 3px;
+            }
+          </pre>
+        </div>
+      </div>
     </div>
 
   </body>

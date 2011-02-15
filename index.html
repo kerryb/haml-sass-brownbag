@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <!-- Slide meta data, remove/edit as you see fit -->
-    <title>RSpec</title>
+    <title>Haml, Sass and LESS</title>
     <meta name="author" content="Kerry Buckley" />
     <meta name="email" content="kerry.buckley@gmail.com" />
     <meta name="date" content="2011-02-15" />
@@ -21,7 +21,9 @@
     <!-- Syntax highlighting -->
     <script type="text/javascript" src="highlighter/shCore.js"></script>
     <script type="text/javascript" src="highlighter/shBrushBash.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushPlain.js"></script>
     <script type="text/javascript" src="highlighter/shBrushRuby.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushXml.js"></script>
     <link type="text/css" rel="stylesheet" href="highlighter/shCore.css"/>
     <link type="text/css" rel="stylesheet" href="highlighter/shThemeEclipse.css"/>
     <!-- Slippy init code -->
@@ -35,7 +37,7 @@
   </head>
   <body>
     <div class="slide">
-      <h1>HAML, SASS and Less</h1>
+      <h1>Haml, Sass and Less</h1>
       <h2 class="center">Kerry Buckley<br />15 February 2011</h2>
       <div class="licence">
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img
@@ -46,6 +48,40 @@
       <div class="footer">
         <span class="left">Use space bar or arrow keys to navigate, and escape for index.</span>
         <span class="right">Built with <a href="https://github.com/Seldaek/slippy">Slippy</a>.</span>
+      </div>
+    </div>
+    <div class="slide">
+      <h1>What is HAML?</h1>
+      <ul>
+        <li>Alternative to ERB etc</li>
+        <li>No inline code in HTML</li>
+        <li>Structured</li>
+      </ul>
+    </div>
+    <div class="slide">
+      <h1>So what does it look like?</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: plain">
+            %html
+              %head
+                %title Hello World
+              %body
+                %p This is Haml!
+          </pre>
+        </div>
+        <div class="right">
+          <pre class="brush: xml">
+            &lt;html&gt;
+              &lt;head&gt;
+                &lt;title&gt;Hello World&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                &lt;p&gt;This is Haml!&lt;/p&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          </pre>
+        </div>
       </div>
     </div>
   </body>

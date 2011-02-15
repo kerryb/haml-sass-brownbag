@@ -52,7 +52,7 @@
     </div>
 
     <div class="slide">
-      <h1>What is HAML?</h1>
+      <h1>What is Haml?</h1>
       <ul>
         <li>Alternative to ERB etc</li>
         <li>Separates code from HTML</li>
@@ -67,6 +67,7 @@
       <div class="comparison">
         <div class="left">
           <pre class="brush: plain">
+            !!!
             %html
               %head
                 %title Hello World
@@ -79,6 +80,7 @@
         </div>
         <div class="right">
           <pre class="brush: xml">
+            &lt;!DOCTYPE html&gt;
             &lt;html&gt;
               &lt;head&gt;
                 &lt;title&gt;Hello World&lt;/title&gt;
@@ -110,5 +112,121 @@
         <li>Less flexible</li>
       </ul>
     </div>
+
+    <div class="slide">
+      <h1>Using in Rails</h1>
+      <p>In your <code>GemFile</code>:</p>
+      <pre class="brush: ruby">
+        gem "haml"
+      </pre>
+      <p>Views named <code><em>something</em>.html.haml</code> will be automatically compiled and rendered.</p>
+    </div>
+
+    <div class="slide">
+      <h1>Using outside Rails</h1>
+      <pre class="brush: ruby">
+        gem install haml
+
+        engine = Haml::Engine.new(&quot;%p Haml code!&quot;)
+        engine.render #=&gt; &quot;&lt;p&gt;Haml code!&lt;/p&gt;\n&quot;
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Basics</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: plain">
+            %div
+              %p foo
+              %p
+                bar
+                %ul
+                  %li item one
+                  %li item two
+          </pre>
+        </div>
+        <div class="middle">
+          <p>&#10151;</p>
+        </div>
+        <div class="right">
+          <pre class="brush: xml">
+            &lt;div&gt;
+              &lt;p&gt;foo&lt;/p&gt;
+              &lt;p&gt;
+                bar
+                &lt;ul&gt;
+                  &lt;li&gt;item one&lt;/li&gt;
+                  &lt;li&gt;item two&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/p&gt;
+            &lt;/div&gt;
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Classes, IDs etc</h1>
+      <div class="comparison">
+        <div class="left">
+          <pre class="brush: plain">
+            %p.important Read me
+
+            %p#reason it's important
+
+            %p.note.info Two classes
+
+            %img{:src =&gt; &quot;foo.jpg&quot;, :alt =&gt; &quot;foo&quot;}
+
+
+            #main Div is default
+          </pre>
+        </div>
+        <div class="middle">
+          <p>&#10151;</p>
+        </div>
+        <div class="right">
+          <pre class="brush: xml">
+            &lt;p class='important'&gt;Read me&lt;/p&gt;
+
+            &lt;p id='reason'&gt;it's important&lt;/p&gt;
+
+            &lt;p class='note info'&gt;Two classes&lt;/p&gt;
+
+            &lt;img alt='foo' src='foo.jpg' /&gt;
+
+            &lt;div id='main'&gt;Div is default&lt;/div&gt;
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Ruby</h1>
+      <pre class="brush: plain">
+        %html
+          %head
+            %title= @title
+          %body
+            .main
+              = yield
+            #footer
+              = yield :footer
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Other stuff</h1>
+      <ul>
+        <li>Comments</li>
+        <li>Escaping and unescaping</li>
+        <li>Self-closing tags</li>
+        <li>Whitespace removal</li>
+        <li>Filters</li>
+      </ul>
+      <p>And more &ndash; read the manual!</p>
+    </div>
+
   </body>
 </html>
